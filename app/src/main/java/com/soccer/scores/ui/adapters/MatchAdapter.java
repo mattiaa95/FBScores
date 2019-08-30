@@ -1,5 +1,6 @@
 package com.soccer.scores.ui.adapters;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.soccer.scores.R;
 import com.soccer.scores.databinding.ItemMatchBinding;
+import com.soccer.scores.datamodel.TeamResouce;
 import com.soccer.scores.network.datamodel.Match;
 import java.util.List;
 
@@ -51,9 +53,17 @@ public class MatchAdapter extends RecyclerView.Adapter {
 
         public void refreshCountryItem(Match matchTableItem, int position) {
             this.item = matchTableItem;
-            itemMatchBinding.twMatchName.setText(position+" - "+item.getHomeTeam().getName() + " VS " +item.getAwayTeam().getName());
-        }
+            itemMatchBinding.twMatchName.setText(item.getHomeTeam().getName() + " VS " + item.getAwayTeam().getName());
+            try {
 
+                itemMatchBinding.ivFirstimage.setImageResource(TeamResouce.valueOf("_" + item.getHomeTeam().getId()).getResourceId());
+                itemMatchBinding.ivLastimage.setImageResource(TeamResouce.valueOf("_" + item.getAwayTeam().getId()).getResourceId());
+
+            } catch (Exception e) {
+                Log.d("FAIL", e.getMessage());
+            }
+
+        }
     }
 
 }
