@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Football Soccer Scores</string>
+    <string name="app_name">Football Scores</string>
+    <string name="match_day_title">TODAY MATCHES</string>
 </resources>

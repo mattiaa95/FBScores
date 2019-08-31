@@ -26,8 +26,8 @@ public class Client {
     private static Retrofit retrofit = builder.client(httpClientBuilder.build()).build();
     private static IClient iClient = retrofit.create(IClient.class);
 
-    public static void getMachesList(Callback<Matches> callback) {
-        Call<Matches> getMachesList = iClient.getMachesList("/v2/matches?dateFrom=2019-08-26&dateTo=2019-08-31");
-        getMachesList.enqueue(callback);
+    public static void getMatchesList(Callback<Matches> callback,String dateFrom,String dateTo) {
+        Call<Matches> getMatchesList = iClient.getMatchesList(dateFrom,dateTo);
+        getMatchesList.enqueue(callback);
     }
 }
